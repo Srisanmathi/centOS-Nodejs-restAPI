@@ -8,9 +8,15 @@ app.use(cors())
 
 app.get('/', (req, res) => {
 
-    setInterval(()=>{
-        res.send("hello");
-    },10000);
+    
+        axios.get('https://coothjmv52.execute-api.us-east-2.amazonaws.com/stage')
+            .then(resp=>{
+                res.send(JSON.stringify(resp.data));
+            
+            }).catch(function (error) {
+                console.log(error);
+              })      
+   
     
 })
 
